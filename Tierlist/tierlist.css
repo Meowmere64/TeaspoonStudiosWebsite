@@ -1,0 +1,64 @@
+body{
+    background-color: #222;
+    color:white;
+    font-family: sans-serif;
+}
+
+input{
+    background-color: #444;
+    border: 0px;
+    color: white;
+}
+
+button{
+    background-color: #444;
+    border: 0px;
+    color: white;
+    padding: 5px;
+}
+button:active{
+    background-color: #111;
+}
+
+
+.rank{
+    border-left: red 4px solid;
+    display: flex;
+    justify-content: flex-start;
+    background-color: #333;
+}
+
+.listingHolder{
+    display: flex;
+    flex-direction: column;
+}
+
+.rank > .rankLabel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    font-size: 36px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.listing{
+    user-select: none;
+    font-size: 16px;
+    padding: 2px;
+}
+
+.listing.ghost {
+    color: #FFF8;
+    border: 1px solid #FFF2;
+}
+.listing.ghost > img{
+    opacity: .533;
+}
+
+.listing > img{
+    max-height: 25px;
+    vertical-align: middle;
+    object-fit: contain;
+}
