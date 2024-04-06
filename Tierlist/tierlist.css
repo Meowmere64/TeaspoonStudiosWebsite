@@ -4,6 +4,11 @@ body{
     font-family: sans-serif;
 }
 
+h2{
+    padding: 0%;
+    margin: 5px;
+}
+
 input{
     background-color: #444;
     border: 0px;
@@ -14,7 +19,7 @@ button{
     background-color: #444;
     border: 0px;
     color: white;
-    padding: 5px;
+    padding: 2px;
 }
 button:active{
     background-color: #111;
@@ -31,6 +36,15 @@ button:active{
 .listingHolder{
     display: flex;
     flex-direction: column;
+}
+.rank > .controlholder{
+    right: 0%;
+    flex-grow: 1;
+    width: 10px;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: right;
 }
 
 .rank > .rankLabel{

@@ -1,3 +1,5 @@
+import "/lib/cycle.js";
+
 let Tierlist = [];
 let currentDraggingElement;
 
@@ -11,6 +13,28 @@ function rebuildTierlist(){
     for(let i = 0; i < listings.length; i++){
         let element = listings[i]
         element.addEventListener("mousedown", mouseDownListing);
+    }
+}
+
+function shuffleItem(array,item,down){
+    if(!array.includes(item))
+    {
+        console.log("WUH WOH");
+        return;
+    }
+
+    let oldIndex = array.findIndex((element) => element==item);
+    if((oldIndex == 0 && !down) || (oldIndex == array.length-1 && down))
+    {
+        console.log("damn");
+        return;
+    }
+    
+    array.splice(oldIndex,1);
+    if(down){
+        array.splice(oldIndex+1,0,item);
+    } else {
+        array.splice(oldIndex-1,0,item);
     }
 }
 
@@ -60,20 +84,7 @@ class Tier{
     }
 
     moveItem(item,down){
-        if(!this.items.includes(item))
-        {
-            console.log("WUH WOH");
-            return;
-        }
-        
-
-        let oldIndex = this.items.findIndex((element) => element==item);
-        this.items.splice(oldIndex,1);
-        if(down){
-            this.items.splice(oldIndex+1,0,item);
-        } else {
-            this.items.splice(oldIndex-1,0,item);
-        }
+        shuffleItem(this.items,item,down);
         this.reorderItems();
     }
 
@@ -92,6 +103,7 @@ class Tier{
     }
 
     makeHTML(){
+        let thisTier = this;
 
         let tier = document.createElement("div");
         tier.className = "rank";
@@ -103,6 +115,58 @@ class Tier{
 
         let listingHolder = tier.appendChild(document.createElement("div"));
         listingHolder.className = "listingHolder";
+
+        let controlHolder = tier.appendChild(document.createElement("div"));
+        controlHolder.className = "controlHolder"
+
+        let upArrow = document.createElement("button")
+        upArrow.innerHTML = "↑";
+        controlHolder.appendChild(upArrow);
+        upArrow.addEventListener("click", function(){
+            shuffleItem(Tierlist,thisTier,false);
+            rebuildTierlist();
+        });
+
+        let downArrow = document.createElement("button")
+        downArrow.innerHTML = "↓";
+        controlHolder.appendChild(downArrow);
+        downArrow.addEventListener("click", function(){
+            shuffleItem(Tierlist,thisTier,true);
+            rebuildTierlist();
+        });
+
+        let editButton = document.createElement("button")
+        editButton.innerHTML = "✎";
+        controlHolder.appendChild(editButton);
+        editButton.addEventListener("click", function(){
+            let text = window.prompt("Input Tier Name:")
+            if(text == "" || text == null)
+                return;
+            thisTier.name = text;
+            rebuildTierlist();
+        });
+
+        let deleteButton = document.createElement("button")
+        deleteButton.innerHTML = "✖";
+        controlHolder.appendChild(deleteButton);
+        deleteButton.addEventListener("click", function(){
+            if(Tierlist.length <= 1)
+            {
+                window.alert("You can't delete the only tier left!");
+                return;
+            }
+            if(!window.confirm("Are you sure? All items within will be moved to the last tier."))
+                    return;
+
+
+            let lastTier = (Tierlist[Tierlist.length-1] == thisTier) ? Tierlist[Tierlist.length-2] : Tierlist[Tierlist.length-1];
+            thisTier.items.forEach(element => {
+                //thisTier.removeItem(element);
+                lastTier.addToTier(element);
+            });
+            Tierlist.splice(Tierlist.findIndex((element) => element==thisTier),1);
+            rebuildTierlist();
+        });
         
         this.items.forEach(item => {
             listingHolder.appendChild(item.makeHTML());
@@ -140,6 +204,7 @@ class Item{
         this.image = image;
     }   
     makeHTML(){
+        let thisItem = this;
         let listing = document.createElement("div");
         listing.innerHTML = this.text;
         listing.className = "listing";
@@ -149,6 +214,16 @@ class Item{
             img.src = this.image;
             listing.appendChild(img);
         }
+
+        let deleteButton = document.createElement("button")
+        deleteButton.innerHTML = "✖";
+        listing.appendChild(deleteButton);
+        deleteButton.addEventListener("click", function(){
+            thisItem.ownedTier.removeItem(thisItem);
+            rebuildTierlist();
+        })
+
+
         listing.id = this.text;
         return listing;
     }
@@ -156,12 +231,12 @@ class Item{
 
 let tier = new Tier("Unranked", "#FFF");
 
-
+/*
 for(let i = 0; i < 10; i++){
     let testItem = new Item("IDK STUFF " + i, "https://images.pexels.com/photos/18069008/pexels-photo-18069008.jpeg?cs=srgb&dl=pexels-shoaib-asif-18069008.jpg&fm=jpg");
     tier.addToTier(testItem);
     //document.getElementById("testlist").appendChild(testItem.makeHTML());
-}
+}*/
 
 tier.makeHTML();
 
@@ -250,6 +325,46 @@ document.getElementById("additembutton").addEventListener('click',function(event
 
     let item = new Item(name,image);
     Tierlist[Tierlist.length-1].addToTier(item,true);
+})
+
+document.getElementById("savebutton").addEventListener("click",function(){
+
+    let listData = JSON.stringify(JSON.decycle(Tierlist));
+    let bb = new Blob([listData], {type: "text/plain"});
+    let a = document.createElement("a");
+    a.download = document.getElementById("savename").value + ".tlist";
+    a.href = window.URL.createObjectURL(bb);
+    a.click();
+})
+
+document.getElementById("loadbutton").addEventListener("click", function(){
+    const selectedFile = document.getElementById("loadlistFile").files[0];
+    let reader = new FileReader();
+    reader.addEventListener(
+        "load",
+        () => {
+            Tierlist = [];
+            let tempTierlist = JSON.retrocycle(JSON.parse(reader.result));
+            for(let i = tempTierlist.length-1; i >= 0; i--){
+                let element = tempTierlist[i];
+                let tier = new Tier(element.name,element.color);
+
+                element.items.forEach(itemelement => {
+                    let item = new Item(itemelement.text,itemelement.image,tier);
+                    tier.addToTier(item);
+                });
+            }
+            tempTierlist.forEach(element => {
+
+            });
+
+            rebuildTierlist();
+        },
+        false
+    );
+
+    if(selectedFile)
+        reader.readAsText(selectedFile);
 })
 
 
