@@ -55,6 +55,11 @@ button:active{
     font-size: 36px;
     font-weight: bold;
     font-family: sans-serif;
+    word-wrap: normal;
+    text-align: center;
+    width: 256px;
+    border-top: 1px dashed #555;
+    border-bottom: 1px dashed #555;
 }
 
 .listing{
