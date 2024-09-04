@@ -7,7 +7,8 @@ let images = [
     "LISTENCLOSELY.png",
     "WATCHCLOSELY.png",
     "iamstillhere.png",
-    "online.png"
+    "online.png",
+    "theyhaunt.png"
 ]
 
 let index = Math.floor(Math.random()*images.length);
