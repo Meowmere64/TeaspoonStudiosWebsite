@@ -1,0 +1,105 @@
+h1{
+    color: rgb(0, 0, 0);
+}
+
+h2{
+    color: rgb(35, 35, 200);
+}
+
+body{
+    background-color: #1f1f1f;
+}
+
+.logo{
+    position: absolute;
+    width: 25%;
+    left: 37%;
+    top: 15%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.Centerframe{
+    border: 1px solid white;
+    color: white;
+    position: absolute;
+    width: 50%;
+    left: 25%;
+    top: 60%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.Centerframe > img{
+    max-height: 100%;
+    max-width: 100%;
+    margin: auto;
+    display: block;
+}
+
+.Centerframe > .gif {
+    background-size: cover;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    opacity: 25%;
+}
+
+.Centerframe > .ee {
+    width: 20in;
+    height: 6cm;
+    background-size:cover;
+}
+
+@font-face {
+    font-family: "Homespun";
+    src: url("homespun.ttf") format('truetype');
+}
+
+.links{
+    position: absolute;
+    color: white;
+    width: 25%;
+    left: 37%;
+    bottom: 5%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: center;
+    font-family: "Homespun";
+}
+
+.members{
+    position: absolute;
+    color: white;
+    width: 25%;
+    left: 37%;
+    bottom: 5%;
+    -ms-transform: translateY(100%);
+    transform: translateY(100%);
+    text-align: center;
+    font-family: "Homespun";
+}
+
+.links > a{
+    color: lightgreen;
+    
+    -o-transition:.1s;
+    -ms-transition:.1s;
+    -moz-transition:.1s;
+    -webkit-transition:.1s;
+    /* ...and now for the proper property */
+    transition:.1s;
+}
+
+
+.links > a:visited{
+    text-decoration-color: rgb(89, 165, 89);
+}
+
+.links > a:hover{
+    color: white;
+    text-decoration-thickness: 2px;
+    text-decoration-color: white;
+}
