@@ -37,6 +37,13 @@ body{
     display: block;
 }
 
+.Centerframe > canvas{
+    max-height: 100%;
+    max-width: 100%;
+    margin: auto;
+    display: block;
+}
+
 .Centerframe > .gif {
     background-size: cover;
     position: absolute;
