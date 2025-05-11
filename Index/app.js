@@ -243,9 +243,7 @@ function beginRender(){
 
 //document.getElementById("teaser").src = "Images/" + images[index];
 
-
-
 if(ee == 69){
-    document.getElementById("teaser").src = "Images/scott-scott_the_woz.gif";
-    document.getElementById("teaser").className = "ee";
+    document.getElementById("canvas").style.visibility = "hidden";
+    document.getElementById("img").style.visibility = "visible";
 }

@@ -35,6 +35,9 @@ body{
     max-width: 100%;
     margin: auto;
     display: block;
+    width: 20in;
+    height: 6cm;
+    background-size:cover;
 }
 
 .Centerframe > canvas{
@@ -54,11 +57,6 @@ body{
     opacity: 25%;
 }
 
-.Centerframe > .ee {
-    width: 20in;
-    height: 6cm;
-    background-size:cover;
-}
 
 @font-face {
     font-family: "Homespun";
