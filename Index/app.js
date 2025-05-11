@@ -132,6 +132,11 @@ void main() {
   outColor *= snoise(vec3(v_uv * vec2(100000.0,100000.0) + vec2(7000.0,0.0), u_time)) + 0.8;
   outColor += (snoise(vec3(v_uv.y * 2.0,v_uv.y * 2.0, float(u_time) * 0.2)) * 2.0 - 1.0) * 0.01;
 
+  float fade = float(clamp(u_time, 0, 600));
+  fade /= 600.0;
+
+  outColor *= fade;
+
   outColor.a = 1.0;
 }
 `;
