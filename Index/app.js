@@ -143,6 +143,8 @@ void main() {
 
 const canvas = document.getElementById("mainCanvas");
 let gl = canvas.getContext("webgl2");
+gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+gl.clearColor(0, 0, 0, 1);
 
 const positions = [
     -1, -1,
@@ -228,9 +230,6 @@ function beginRender(){
 
 
     gl.disable(gl.CULL_FACE);
-
-    gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
-    gl.clearColor(0, 0, 0, 1);
     gl.clear(gl.COLOR_BUFFER_BIT);
     gl.useProgram(program);
     gl.bindVertexArray(vao);
