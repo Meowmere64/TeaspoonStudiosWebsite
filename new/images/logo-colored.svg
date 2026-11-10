@@ -3,7 +3,7 @@
   <defs>
     <style>
       .col-main {
-        fill: white;
+        fill: rgb(230, 209, 172);
       }
 
       .col-sub {

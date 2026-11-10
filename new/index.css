@@ -23,6 +23,42 @@ body {
 }
 
 
+nav {
+    width: 100%;
+    background-color: rgb(230, 209, 172);
+    overflow: auto;
+    margin-bottom: 5%;
+}
+ul {
+    padding: 0%;
+    margin: 0 0 0 6%;
+    list-style: none;
+}
+li {
+    float: left;
+}
+.nav_logo img {
+    max-width: 5%;
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+nav a {
+    width: 100px;
+    display: block;
+    padding: 20%;
+    text-decoration: none;
+    font-family: font-main-site;
+    color: black;
+    text-align: center;
+}
+nav a:hover {
+    background-color: rgb(151, 131, 98);
+    transition: 0.5s;
+    text-transform: uppercase;
+}
+
+
 .div_main_box {
     max-width: 75%;
     margin: 0 auto;
@@ -35,7 +71,7 @@ body {
 
 
 .div_main_box_logo > .main_logo{
-    max-width: 50vw;
+    max-width: 35vw;
     margin: 0 auto;
 }
 
