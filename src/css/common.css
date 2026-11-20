@@ -1,0 +1,22 @@
+@font-face {
+    font-family: font-main-site;
+    src: url(../fonts/futura-medium.ttf)
+}
+
+
+body {
+    --color-accent: rgb(230, 209, 172);
+    --color-accent-grad: #d6b376;
+
+    --color-fill: #321449;
+    --color-fill-grad: #36164e;
+
+    color: var(--color-accent);
+    font-family: font-main-site;
+
+    background-image: linear-gradient(20deg,var(--color-fill), var(--color-fill-grad) 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+    min-height: 100vh;
+}

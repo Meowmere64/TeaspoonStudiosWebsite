@@ -1,0 +1,116 @@
+nav {
+    width: 100%;
+    background-color: rgb(230, 209, 172);
+    overflow: auto;
+    margin-bottom: 5%;
+}
+ul {
+    padding: 0%;
+    margin: 0 0 0 6%;
+    list-style: none;
+}
+li {
+    float: left;
+}
+.nav_logo img {
+    max-width: 5%;
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+nav a {
+    width: 100px;
+    display: block;
+    padding: 20%;
+    text-decoration: none;
+    font-family: font-main-site;
+    color: black;
+    text-align: center;
+}
+nav a:hover {
+    background-color: rgb(151, 131, 98);
+    transition: 0.5s;
+    text-transform: uppercase;
+}
+
+
+.div_main_box {
+    max-width: 75%;
+    margin: 0 auto;
+}
+
+.div_main_box_logo {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+
+.div_main_box_logo > .main_logo{
+    max-width: 35vw;
+    margin: 0 auto;
+}
+
+.div_main_box > p{
+    text-align: center;
+    font-size: 48px;
+    margin-bottom: 24px;
+}
+
+.div_people_box{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.div_people_box_member{
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 2px;
+    margin: 0 auto;
+
+    max-width: 50vw;
+
+    padding: 20px;
+}
+
+.div_people_box_member_header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-size: 28px;
+
+    text-align: center;
+    padding-top: 0;
+}
+
+.div_people_box_member_image_wrap{
+    --img_border_radius: 60px;
+    --img_border_size: 3px;
+
+
+    flex: 0 0 auto;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1;
+
+    background-image: linear-gradient(0, var(--color-accent-grad) 0%, var(--color-accent) 100%);
+    border-radius: var(--img_border_radius);
+    overflow: hidden;
+
+    padding: var(--img_border_size);
+    box-sizing: border-box;
+}
+
+.div_people_box_member_image {
+    --image_size: 300px;
+
+    aspect-ratio: 1;
+    min-width: 0;
+    max-width: var(--image_size);
+    border-radius: var(--img_border_radius);
+}

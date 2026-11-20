@@ -1,0 +1,1 @@
+npx @11ty/eleventy --output=../build --input=. --config=eleventy.config.js %1

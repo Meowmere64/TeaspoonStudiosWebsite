@@ -1,0 +1,37 @@
+{% extends "base.njk" %}
+{% block header %}
+<link rel="stylesheet" href="css/index.css">
+{% endblock %}
+{% block content %}
+<div class="div_main_box">
+    <div class="div_main_box_logo">
+        <img class="main_logo" src="images/logo.svg">
+    </div>
+
+    <p>A small studio making software.</p>
+
+    <div class="div_people_box">
+        <div class="div_people_box_member">
+            <div class="div_people_box_member_header">
+                Eli Tessier
+                <br>
+                @MysticTortoise
+            </div>
+            <div class="div_people_box_member_image_wrap">
+                <img class="div_people_box_member_image" src="images/eli.png">
+            </div>
+        </div>
+
+        <div class="div_people_box_member">
+            <div class="div_people_box_member_header">
+                Flynn Powers
+                <br>
+                @Meowmere
+            </div>
+            <div class="div_people_box_member_image_wrap">
+                <img class="div_people_box_member_image" src="images/flynn.png">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
