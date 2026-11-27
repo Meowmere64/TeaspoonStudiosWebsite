@@ -1,0 +1,75 @@
+body {
+    padding-top: 150px;
+}
+
+#navbar {
+
+    position: fixed;
+    background-color: var(--color-fill-dark);
+    top: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+#navbar::before {
+    --border-dash-length: 40px;
+    --border-space-length: 26px;
+    --border-width: 5px;
+    
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: calc(var(--border-width) * -0.5);
+    left: 0;
+    pointer-events: none;
+    
+
+
+    background-image: repeating-linear-gradient(
+        90deg,
+        var(--color-accent) 0,
+        var(--color-accent) var(--border-dash-length),
+        transparent var(--border-dash-length),
+        transparent calc(var(--border-dash-length) + var(--border-space-length)) /* 12px dash + 8px gap = 20px total pattern */
+    );
+    background-position: left bottom;
+    background-size: 100% var(--border-width);
+    background-repeat: no-repeat;
+}
+
+#navbar > #navbar-left{
+    display: flex;
+    align-items: center;
+}
+
+#navbar-logo {
+    height: 96px;
+}
+
+#navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#navbar ul > li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+#navbar ul > li a {
+    color: var(--color-accent);
+    font-size: 48px;
+    text-decoration: none;
+    transition-duration: 0.2s;
+}
+
+#navbar ul > li a:hover{
+    color: var(--color-accent-grad)
+}

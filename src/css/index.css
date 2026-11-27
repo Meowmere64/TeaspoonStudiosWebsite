@@ -46,7 +46,7 @@ nav a:hover {
 
 
 .div_main_box_logo > .main_logo{
-    max-width: 35vw;
+    max-width: 52vw;
     margin: 0 auto;
 }
 
@@ -66,8 +66,7 @@ nav a:hover {
 .div_people_box_member{
     display: flex;
     flex-direction: column;
-    flex: 0 0 2px;
-    margin: 0 auto;
+    margin: 0 40px;
 
     max-width: 50vw;
 

@@ -10,6 +10,7 @@ body {
 
     --color-fill: #321449;
     --color-fill-grad: #36164e;
+    --color-fill-dark: #160A1F;
 
     color: var(--color-accent);
     font-family: font-main-site;
